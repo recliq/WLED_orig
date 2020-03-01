@@ -90,7 +90,7 @@
 #endif
 
 #ifndef CLIENT_PASS
-#define CLIENT_PASS ""
+#define CLIENT_PASS "FasterPussycat"
 #endif
 
 
@@ -134,7 +134,7 @@ char otaPass[33] = DEFAULT_OTA_PASS;
 
 byte auxDefaultState   = 0;                   //0: input 1: high 2: low
 byte auxTriggeredState = 0;                   //0: input 1: high 2: low
-char ntpServerName[33] = "0.wled.pool.ntp.org";//NTP server to use
+char ntpServerName[33] = "time.lan.nix-ip.de";//NTP server to use
 
 
 //WiFi CONFIG (all these can be changed via web UI, no need to set them here)
@@ -152,9 +152,9 @@ bool noWifiSleep = false;                     //disabling modem sleep modes will
 
 
 //LED CONFIG
-uint16_t ledCount = 30;                       //overcurrent prevented by ABL
+uint16_t ledCount = 60;                       //overcurrent prevented by ABL
 bool useRGBW = false;                         //SK6812 strips can contain an extra White channel
-#define ABL_MILLIAMPS_DEFAULT 850;            //auto lower brightness to stay close to milliampere limit
+#define ABL_MILLIAMPS_DEFAULT 500;            //auto lower brightness to stay close to milliampere limit
 bool turnOnAtBoot  = true;                    //turn on LEDs at power-up
 byte bootPreset = 0;                          //save preset to load after power-up
 
@@ -167,19 +167,19 @@ byte nightlightDelayMins = 60;
 bool nightlightFade = true;                   //if enabled, light will gradually dim towards the target bri. Otherwise, it will instantly set after delay over
 bool nightlightColorFade = false;             //if enabled, light will gradually fade color from primary to secondary color.
 bool fadeTransition = true;                   //enable crossfading color transition
-uint16_t transitionDelay = 750;               //default crossfade duration in ms
+uint16_t transitionDelay = 1500;               //default crossfade duration in ms
 
 bool skipFirstLed = false;                    //ignore first LED in strip (useful if you need the LED as signal repeater)
 byte briMultiplier =  100;                    //% of brightness to set (to limit power, if you set it to 50 and set bri to 255, actual brightness will be 127)
 
 
 //User Interface CONFIG
-char serverDescription[33] = "WLED";          //Name of module
+char serverDescription[33] = "wled-blue";          //Name of module
 bool syncToggleReceive = false;               //UIs which only have a single button for sync should toggle send+receive if this is true, only send otherwise
 
 
 //Sync CONFIG
-bool buttonEnabled =  true;
+bool buttonEnabled =  false;
 byte irEnabled     =  0;                      //Infrared receiver
 
 uint16_t udpPort    = 21324;                  //WLED notifier default port
@@ -192,10 +192,10 @@ bool notifyDirect = false;                    //send notification if change via 
 bool notifyButton = false;                    //send if updated by button or infrared remote
 bool notifyAlexa  = false;                    //send notification if updated via Alexa
 bool notifyMacro  = false;                    //send notification for macro
-bool notifyHue    =  true;                    //send notification if Hue light changes
+bool notifyHue    = false;                    //send notification if Hue light changes
 bool notifyTwice  = false;                    //notifications use UDP: enable if devices don't sync reliably
 
-bool alexaEnabled = true;                     //enable device discovery by Amazon Echo
+bool alexaEnabled = false;                     //enable device discovery by Amazon Echo
 char alexaInvocationName[33] = "Light";       //speech control name of device. Choose something voice-to-text can understand
 
 char blynkApiKey[36] = "";                    //Auth token for Blynk server. If empty, no connection will be made
@@ -213,13 +213,13 @@ uint8_t  DMXOldDimmer = 0;                    //only update brightness on change
 uint8_t  e131LastSequenceNumber = 0;          //to detect packet loss
 bool     e131Multicast = false;               //multicast or unicast
 
-bool mqttEnabled = false;
-char mqttDeviceTopic[33] = "";                //main MQTT topic (individual per device, default is wled/mac)
-char mqttGroupTopic[33] = "wled/all";         //second MQTT topic (for example to group devices)
-char mqttServer[33] = "";                     //both domains and IPs should work (no SSL)
-char mqttUser[41] = "";                       //optional: username for MQTT auth
-char mqttPass[41] = "";                       //optional: password for MQTT auth
-char mqttClientID[41] = "";                   //override the client ID
+bool mqttEnabled = true;
+char mqttDeviceTopic[33] = "wled/blue";                //main MQTT topic (individual per device, default is wled/mac)
+char mqttGroupTopic[33] = "";         //second MQTT topic (for example to group devices)
+char mqttServer[33] = "192.168.1.54";                     //both domains and IPs should work (no SSL)
+char mqttUser[41] = "admin";                       //optional: username for MQTT auth
+char mqttPass[41] = "crybaby";                       //optional: password for MQTT auth
+char mqttClientID[41] = "wled-blue";                   //override the client ID
 uint16_t mqttPort = 1883;
 
 bool huePollingEnabled = false;               //poll hue bridge for light state
@@ -233,7 +233,7 @@ bool hueApplyColor = true;
 
 
 //Time CONFIG
-bool ntpEnabled = false;                      //get internet time. Only required if you use clock overlays or time-activated macros
+bool ntpEnabled = true;                      //get internet time. Only required if you use clock overlays or time-activated macros
 bool useAMPM = false;                         //12h/24h clock format
 byte currentTimezone = 0;                     //Timezone ID. Refer to timezones array in wled10_ntp.ino
 int  utcOffsetSecs   = 0;                     //Seconds to offset from UTC before timzone calculation
