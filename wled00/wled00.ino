@@ -140,8 +140,8 @@ char ntpServerName[33] = "time.lan.nix-ip.de";//NTP server to use
 //WiFi CONFIG (all these can be changed via web UI, no need to set them here)
 char clientSSID[33] = CLIENT_SSID;
 char clientPass[65] = CLIENT_PASS;
-char cmDNS[33] = "x";                         //mDNS address (placeholder, will be replaced by wledXXXXXXXXXXXX.local)
-char apSSID[33] = "";                         //AP off by default (unless setup)
+char cmDNS[33] = "wled-shorty";                         //mDNS address (placeholder, will be replaced by wledXXXXXXXXXXXX.local)
+char apSSID[33] = "wled-shorty";                         //AP off by default (unless setup)
 byte apChannel = 1;                           //2.4GHz WiFi AP channel (1-13)
 byte apHide = 0;                              //hidden AP SSID
 byte apBehavior = AP_BEHAVIOR_BOOT_NO_CONN;   //access point opens when no connection after boot by default
@@ -174,7 +174,7 @@ byte briMultiplier =  100;                    //% of brightness to set (to limit
 
 
 //User Interface CONFIG
-char serverDescription[33] = "wled-blue";          //Name of module
+char serverDescription[33] = "wled-shorty";          //Name of module
 bool syncToggleReceive = false;               //UIs which only have a single button for sync should toggle send+receive if this is true, only send otherwise
 
 
@@ -214,12 +214,12 @@ uint8_t  e131LastSequenceNumber = 0;          //to detect packet loss
 bool     e131Multicast = false;               //multicast or unicast
 
 bool mqttEnabled = true;
-char mqttDeviceTopic[33] = "wled/blue";                //main MQTT topic (individual per device, default is wled/mac)
+char mqttDeviceTopic[33] = "wled/shorty";                //main MQTT topic (individual per device, default is wled/mac)
 char mqttGroupTopic[33] = "";         //second MQTT topic (for example to group devices)
 char mqttServer[33] = "192.168.1.54";                     //both domains and IPs should work (no SSL)
 char mqttUser[41] = "admin";                       //optional: username for MQTT auth
 char mqttPass[41] = "crybaby";                       //optional: password for MQTT auth
-char mqttClientID[41] = "wled-blue";                   //override the client ID
+char mqttClientID[41] = "wled-shorty";                   //override the client ID
 uint16_t mqttPort = 1883;
 
 bool huePollingEnabled = false;               //poll hue bridge for light state
